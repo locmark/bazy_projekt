@@ -1,0 +1,61 @@
+# Modify this code to update the DB schema diagram.
+# To reset the sample schema, replace everything with
+# two dots ('..' - without quotes).
+
+Akademiki
+-
+id serial PK
+nazwa varchar(20)
+adres varchar(50)
+
+Pokoje
+-
+id serial PK
+nazwa varchar(20)
+pojemnosc int
+id_akademika int FK >- Akademiki.id
+
+Studenci
+-
+id serial PK
+imie varchar(20)
+nazwisko varchar(20)
+rok_stodiow int
+id_pokoju int FK >- Pokoje.id
+
+Komputery
+-
+host varchar(20) PK
+IP varchar(20)
+MAC varchar(20)
+id_studenta int FK >- Studenci.id
+data_dodania timestamp
+
+Komputery_archiwum
+-
+id serial PK
+host varchar(20)
+IP varchar(20)
+MAC varchar(20)
+id_studenta int FK >- Studenci.id
+data_dodania timestamp
+data_archiwizacji timestamp
+
+Pracownicy_akademika
+-
+id_akademika int PK FK >- Akademiki.id
+id_pracownika int PK FK >- Pracownicy.id
+
+Pracownicy
+-
+id serial PK
+imie varchar(20)
+nazwisko varchar(20)
+id_zawodu int FK >- Zawody.id
+
+Zawody
+-
+id serial PK
+nazwa varchar(20)
+
+
