@@ -37,7 +37,7 @@
                 </form>
             ";
 
-            pg_close($dbh);
+            pg_close($connection);
         ?>
     </body>
 </html>

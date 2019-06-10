@@ -74,3 +74,38 @@ INSERT INTO Komputery
         id 
     FROM Studenci
 ;
+
+INSERT INTO Zawody(nazwa) VALUES 
+('Portier'),
+('Woźny'),
+('Ochrona'),
+('Konserwator powierzchni płaskich');
+
+INSERT INTO Pracownicy(imie, nazwisko, id_zawodu) VALUES 
+('Henryk', 'Kowalski', 1),
+('Kazimiera', 'Zalewska', 1),
+('Sylwia', 'Kaźmierczak', 1),
+('Dorota', 'Maciejewska', 2),
+('Jacek', 'Laskowski', 2),
+('Michał', 'Sobczak', 2),
+('Genowefa', 'Lis', 3),
+('Mirosław', 'Czerwiński', 3),
+('Agata', 'Gajewska', 3),
+('Zofia', 'Bąk', 3),
+('Marek', 'Adamczyk', 4),
+('Agata', 'Pawlak', 4),
+('Adam', 'Jankowski', 4);
+
+INSERT INTO Pracownicy_akademika(id_akademika, id_pracownika) VALUES 
+(1, 1),
+(1, 2),
+(1, 3),
+(2, 4),
+(2, 5),
+(2, 6),
+(2, 7),
+(2, 8),
+(3, 8),
+(3, 9),
+(3, 1),
+(3, 2);

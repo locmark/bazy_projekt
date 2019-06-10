@@ -7,12 +7,12 @@
             include 'show_errors.php';
             include 'db_connect.php';
 
-            $imie = $_POST['imie'];
-            $nazwisko = $_POST['nazwisko'];
-            $rok = $_POST['rok'];
-            $pokoj = $_POST['pokoj'];
+            $id = $_POST['id'];
+            $host = $_POST['host'];
+            $IP = $_POST['IP'];
+            $MAC = $_POST['MAC'];
 
-            $query = "INSERT INTO Studenci(imie, nazwisko, rok_studiow, id_pokoju) VALUES ($imie, $nazwisko, $rok, $pokoj)";
+            $query = "INSERT INTO Komputery(host, IP, MAC, id_studenta) VALUES ('$host', '$IP', '$MAC', $id)";
             $result = pg_query($query);
             $amount_of_added = pg_affected_rows($result); 
             

@@ -24,7 +24,7 @@ CREATE TABLE Komputery (
     host varchar(20)   NOT NULL PRIMARY KEY,
     IP varchar(20)   NOT NULL,
     MAC varchar(20)   NOT NULL,
-    id_studenta int   NOT NULL,
+    id_studenta int,
     data_dodania timestamp   NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -54,7 +54,7 @@ CREATE TABLE Pracownicy (
 
 CREATE TABLE Zawody (
     id serial   NOT NULL PRIMARY KEY,
-    nazwa varchar(20)   NOT NULL
+    nazwa varchar(50)   NOT NULL
 );
 
 -- RELATIONS
@@ -94,7 +94,17 @@ LANGUAGE 'plpgsql'
 AS '
  BEGIN
     INSERT INTO Komputery_archiwum(host, IP, MAC, id_studenta, data_dodania) VALUES (OLD.host, OLD.IP, OLD.MAC, OLD.id_studenta, OLD.data_dodania);
-    RETURN NULL;
+    RETURN OLD;
+ END;
+';
+
+CREATE OR REPLACE FUNCTION usuniecie_studenta_DELETE() RETURNS TRIGGER
+LANGUAGE 'plpgsql'
+AS '
+ BEGIN
+    UPDATE Komputery SET id_studenta = NULL WHERE id_studenta = OLD.id;
+    UPDATE Komputery_archiwum SET id_studenta = NULL WHERE id_studenta = OLD.id;
+    RETURN OLD;
  END;
 ';
 
@@ -105,9 +115,13 @@ EXECUTE PROCEDURE archiwizacja_komputera_UPDATE();
 CREATE TRIGGER archiwizacja_komputera_DELETE_TRIGGER BEFORE DELETE ON Komputery FOR EACH ROW
 EXECUTE PROCEDURE archiwizacja_komputera_DELETE();
 
+CREATE TRIGGER usuniecie_studenta_DELETE_TRIGGER BEFORE DELETE ON Studenci FOR EACH ROW
+EXECUTE PROCEDURE usuniecie_studenta_DELETE();
+
 -- VIEWS
 CREATE VIEW Studenci_pokoje_akademiki AS
 SELECT 
+s.id,
 s.imie,
 s.nazwisko,
 s.rok_studiow,

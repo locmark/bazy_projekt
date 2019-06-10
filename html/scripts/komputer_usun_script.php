@@ -1,18 +1,15 @@
 <html>
     <head>
-        <title>dodaj studenta</title>
+        <title>usuń komputer</title>
     </head>
     <body>
     <?php 
             include 'show_errors.php';
             include 'db_connect.php';
 
-            $imie = $_POST['imie'];
-            $nazwisko = $_POST['nazwisko'];
-            $rok = $_POST['rok'];
-            $pokoj = $_POST['pokoj'];
+            $host = $_GET['host'];
 
-            $query = "INSERT INTO Studenci(imie, nazwisko, rok_studiow, id_pokoju) VALUES ($imie, $nazwisko, $rok, $pokoj)";
+            $query = "DELETE FROM Komputery WHERE host = '$host'";
             $result = pg_query($query);
             $amount_of_added = pg_affected_rows($result); 
             

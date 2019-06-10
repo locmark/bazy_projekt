@@ -1,5 +1,5 @@
 <?php 
-    $dbh = pg_connect("
+    $connection = pg_connect("
         dbname=project 
         user=k
         password=FL0OcRi6sARX4GawH4fB 
