@@ -7,12 +7,10 @@
             include 'show_errors.php';
             include 'db_connect.php';
 
-            $id = $_POST['id'];
-            $imie = $_POST['imie'];
-            $nazwisko = $_POST['nazwisko'];
-            $id_zawodu = $_POST['id_zawodu'];
+            $id_akademika = $_POST['id_akademika'];
+            $id_pracownika = $_POST['id_pracownika'];
 
-            $query = "UPDATE Pracownicy SET imie = '$imie', nazwisko = '$nazwisko', id_zawodu = '$id_zawodu' WHERE id = $id";
+            $query = "INSERT INTO Pracownicy_akademika(id_akademika, id_pracownika) VALUES ($id_akademika, $id_pracownika)";
             $result = pg_query($query);
             $amount_of_added = pg_affected_rows($result); 
             

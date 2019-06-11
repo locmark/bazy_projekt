@@ -1,18 +1,16 @@
 <html>
     <head>
-        <title>dodaj studenta</title>
+        <title>usuń studenta</title>
     </head>
     <body>
     <?php 
             include 'show_errors.php';
             include 'db_connect.php';
 
-            $id = $_POST['id'];
-            $imie = $_POST['imie'];
-            $nazwisko = $_POST['nazwisko'];
-            $id_zawodu = $_POST['id_zawodu'];
+            $id_akademika = $_GET['id_akademika'];
+            $id_pracownika = $_GET['id_pracownika'];
 
-            $query = "UPDATE Pracownicy SET imie = '$imie', nazwisko = '$nazwisko', id_zawodu = '$id_zawodu' WHERE id = $id";
+            $query = "DELETE FROM Pracownicy_akademika WHERE id_akademika = $id_akademika AND id_pracownika = $id_pracownika";
             $result = pg_query($query);
             $amount_of_added = pg_affected_rows($result); 
             

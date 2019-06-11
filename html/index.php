@@ -90,7 +90,7 @@
                 pg_close($connection);
             ?>
 
-            <a href="student_add.php">Dodaj Pracownika</a>
+            <a href="pracownik_add.php">Dodaj Pracownika</a>
 
         </div>
     </body>

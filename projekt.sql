@@ -57,6 +57,9 @@ CREATE TABLE Zawody (
     nazwa varchar(50)   NOT NULL
 );
 
+-- COMMENTS
+COMMENT ON TABLE Komputery_archiwum IS 'triggery same tworzą tutaj kopie z tabeli Komputery podczas edycji lub usunięcia hosta';
+
 -- RELATIONS
 ALTER TABLE Pokoje ADD CONSTRAINT fk_Pokoje_id_akademika FOREIGN KEY(id_akademika)
 REFERENCES Akademiki (id) ON DELETE CASCADE ON UPDATE CASCADE;
