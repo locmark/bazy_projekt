@@ -101,10 +101,58 @@
                 echo "</TD>"; //echo "\t";
             }
             $host = pg_fetch_result($result,$w,1);
+            echo "<TD> aktywny </TD>";
             echo "<TD> <a href=komputer_edycja.php?host=$host>Edycja</a> </TD>";
             echo "<TD> <a href=scripts/komputer_usun_script.php?host=$host>Usuń</a> </TD>";
             echo "</TR>"; //echo "<br />";
         }
+
+        if($_POST['typ_wyszukiwania'] == 'host') {
+            $query = "SELECT s.id, k.host, k.IP, k.MAC, s.imie||' '||s.nazwisko AS student FROM 
+            Komputery_archiwum k JOIN Studenci s ON s.id = k.id_studenta
+            WHERE k.host = '$host'";
+        }
+
+        if($_POST['typ_wyszukiwania'] == 'IP') {
+            $query = "SELECT s.id, k.host, k.IP, k.MAC, s.imie||' '||s.nazwisko AS student FROM 
+            Komputery_archiwum k JOIN Studenci s ON s.id = k.id_studenta
+            WHERE k.IP = '$IP'";
+        }
+
+        if($_POST['typ_wyszukiwania'] == 'MAC') {
+            $query = "SELECT s.id, k.host, k.IP, k.MAC, s.imie||' '||s.nazwisko AS student FROM 
+            Komputery_archiwum k JOIN Studenci s ON s.id = k.id_studenta
+            WHERE k.MAC = '$MAC'";
+        }
+
+        $result = pg_query($query);
+        $liczba_kolumn = pg_num_fields($result);
+        $liczba_wierszy = pg_num_rows($result);
+
+        for($w =0;$w<$liczba_wierszy;$w++)
+        {
+            echo "<TR>";
+            for($k =1;$k<$liczba_kolumn;$k++)
+            {
+                echo "<TD>";
+                if($k == 4){
+                    $id_studenta = pg_fetch_result($result,$w,0);
+                    echo "<a href=student_edycja.php?id=$id_studenta>";
+                    echo pg_fetch_result($result,$w,$k);
+                    echo "</a>";
+                } else {
+                    echo pg_fetch_result($result,$w,$k);
+                }
+                
+                echo "</TD>"; //echo "\t";
+            }
+            $host = pg_fetch_result($result,$w,1);
+            echo "<TD> nieaktywny </TD>";
+            echo "<TD> <a href=komputer_edycja.php?host=$host>Edycja</a> </TD>";
+            echo "<TD> <a href=scripts/komputer_usun_script.php?host=$host>Usuń</a> </TD>";
+            echo "</TR>"; //echo "<br />";
+        }
+
         echo "</TABLE>";
     }
 

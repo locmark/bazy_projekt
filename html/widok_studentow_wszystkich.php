@@ -1,4 +1,6 @@
 <h3>Studenci</h3>
+<a href="student_add.php"><div class=button>Dodaj Studenta</div></a>   
+<br/>
 <?php 
     include 'scripts/show_errors.php';
     include 'scripts/db_connect.php';
@@ -39,4 +41,4 @@
     pg_close($connection);
 ?>
 
-<a href="student_add.php">Dodaj Studenta</a>    
+ 

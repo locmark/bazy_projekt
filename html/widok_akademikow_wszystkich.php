@@ -1,4 +1,5 @@
 <h3>Akdemiki</h3>
+<a href="akademik_add.php"><div class=button>Dodaj Akademik</div></a>   
 <?php 
     include 'scripts/show_errors.php';
     include 'scripts/db_connect.php';
@@ -38,4 +39,4 @@
     pg_close($connection);
 ?>
 
-<a href="akademik_add.php">Dodaj Akademik</a>    
+  

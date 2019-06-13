@@ -1,4 +1,5 @@
 <h3>Pracownicy</h3>
+<a href="pracownik_add.php"><div class=button>Dodaj Pracownika</div></a>   
 <?php 
     include 'scripts/show_errors.php';
     include 'scripts/db_connect.php';
@@ -37,5 +38,3 @@
 
     pg_close($connection);
 ?>
-
-<a href="pracownik_add.php">Dodaj Pracownika</a>    
