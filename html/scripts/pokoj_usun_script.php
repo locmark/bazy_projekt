@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>usuń komputer</title>
+        <title>usuń pokoj</title>
         <?php include 'head.php'; ?>
     </head>
     <body>
@@ -8,9 +8,9 @@
             include 'show_errors.php';
             include 'db_connect.php';
 
-            $host = $_GET['host'];
+            $id = $_GET['id'];
 
-            $query = "DELETE FROM Komputery WHERE host = '$host'";
+            $query = "DELETE FROM Pokoje WHERE id = $id";
             $result = pg_query($query);
             $amount_of_added = pg_affected_rows($result); 
             

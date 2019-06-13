@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>dodaj studenta</title>
+        <?php include 'head.php'; ?>
     </head>
     <body>
     <?php 
@@ -12,7 +13,7 @@
             $rok = $_POST['rok'];
             $pokoj = $_POST['pokoj'];
 
-            $query = "INSERT INTO Studenci(imie, nazwisko, rok_studiow, id_pokoju) VALUES ($imie, $nazwisko, $rok, $pokoj)";
+            $query = "INSERT INTO Studenci(imie, nazwisko, rok_studiow, id_pokoju) VALUES ('$imie', '$nazwisko', $rok, $pokoj)";
             $result = pg_query($query);
             $amount_of_added = pg_affected_rows($result); 
             
@@ -26,7 +27,7 @@
             }
             
 
-            echo "<a href=/bazy> Strona Główna </a>";
+            include 'homepage.php';
 
 
             pg_close($connection);

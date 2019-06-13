@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>komputery studenta</title>
+        <?php include 'scripts/head.php'; ?>
     </head>
     <body>
         <?php 

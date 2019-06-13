@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>dodaj studenta</title>
+        <?php include 'head.php'; ?>
     </head>
     <body>
     <?php 
@@ -26,7 +27,7 @@
             }
             
 
-            echo "<a href=/bazy> Strona Główna </a>";
+            include 'homepage.php';
 
 
             pg_close($connection);

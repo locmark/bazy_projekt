@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>dodaj komputer</title>
+        <title>dodaj pokoj</title>
         <?php include 'scripts/head.php'; ?>
     </head>
     <body>
@@ -11,12 +11,11 @@
             $id = $_GET['id'];
 
             echo "
-                <FORM action=scripts/komputer_add_script.php method=POST>
-                Dodaj nowy komputer </br>
-                <input type=hidden name=id value = $id>
-                Host: <input type=text name=host> </br>
-                IP: <input type=text name=IP> </br>
-                MAC: <input type=text name=MAC> </br>
+                <FORM action=scripts/pokoj_add_script.php method=POST>
+                Dodaj nowego pracownika </br>
+                <input type=hidden name=id_akademika value=$id>
+                Nazwa: <input type=text name=nazwa> </br>
+                Pojemnosc: <input type=text name=pojemnosc> </br>
                 <input type=submit name=Dodaj value=Dodaj> 
                 </form>
             ";

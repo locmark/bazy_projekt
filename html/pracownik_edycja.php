@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>edytuj pracownika</title>
+        <?php include 'scripts/head.php'; ?>
     </head>
     <body>
     <?php 
